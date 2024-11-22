@@ -1,5 +1,5 @@
-#ifndef TIMER_H
-#define TIMER_H
+#ifndef SCHEDULER_H
+#define SCHEDULER_H
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -13,7 +13,7 @@ typedef struct {
 
 void timer_init(void);
 void task_add(void (*task)(void), uint16_t period);
-void task_run(void);
+void scheduler_run(void);
 
 #endif
 

@@ -1,4 +1,4 @@
-#include "timer.h"
+#include "scheduler.h"
 
 static Task_t tasks[10];
 static uint8_t task_count = 0;
@@ -39,7 +39,7 @@ ISR(TIMER0_COMPA_vect) {
     }
 }
 
-void task_run(void) {
+void scheduler_run(void) {
     for (uint8_t i = 0; i < task_count; i++) {
         if (tasks[i].ready) {
             tasks[i].task();
@@ -50,3 +50,7 @@ void task_run(void) {
         }
     }
 }
+
+
+
+
