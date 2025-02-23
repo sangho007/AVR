@@ -36,6 +36,7 @@ int main(void) {
     task_add(task_50ms, 50);  // 50ms 주기 태스크 추가
     task_add(task_100ms, 100);  // 100ms 주기 태스크 추가
     task_add(task_1000ms, 1000);  // 100ms 주기 태스크 추가
+    led_off_default();
 
     while(1) {
         scheduler_run();

@@ -7,16 +7,12 @@
   "eh-frame-header": false,
   "exe-suffix": ".elf",
   "late-link-args": {
-    "gnu-cc": [
-      "-lgcc"
-    ],
-    "gnu-lld-cc": [
-      "-lgcc"
-    ]
+    "gnu-cc": ["-lgcc"],
+    "gnu-lld-cc": ["-lgcc"]
   },
   "linker": "avr-gcc",
   "linker-flavor": "gnu-cc",
-  "llvm-target": "avr-unknown-unknown",
+  "llvm-target": "avr-atmega2560",
   "max-atomic-width": 16,
   "metadata": {
     "description": null,
