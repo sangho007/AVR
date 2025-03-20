@@ -3,7 +3,6 @@
 use avr_device::atmega2560;
 use avr_device::interrupt::{self, Mutex};
 use core::cell::RefCell;
-use crate::serial;
 
 //
 // CPU 클록 주파수 (16MHz 기준 예시)
@@ -131,7 +130,7 @@ pub fn serial_echo() {
         let buf = [byte];  // 길이 1짜리 버퍼
         // 만약 들어오는 바이트가 ASCII(또는 UTF-8) 범위라고 가정한다면:
         if let Ok(s) = core::str::from_utf8(&buf) {
-            serial::write_str(s);
+            write_str(s);
         }
     }
 }
