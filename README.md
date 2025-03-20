@@ -15,7 +15,7 @@
 ## 폴더 구조
 
 ```bash
-AVR_Firmware02
+AVR_Firmware_Rust
 ├── .cargo
     ├── config.toml
 ├── Cargo.lock
@@ -58,8 +58,8 @@ Arduino Mega 2560(ATmega2560)에서 Rust 펌웨어를 빌드하기 위해서는 
 
 ### 2. 레포지토리 클론
 ```bash
-git clone https://github.com/your_username/AVR_Firmware02.git
-cd AVR_Firmware02
+git clone https://github.com/your_username/AVR.git
+cd AVR_Firmware_Rust
 ```
 
 ### 3. 빌드 & 업로드
