@@ -1,4 +1,4 @@
-# AVR_Firmware02
+# AVR_Firmware_Rust
 
 이 프로젝트는 **Arduino Mega 2560(ATmega2560 MCU)** 보드에서 동작하는 간단한 **소프트웨어 스케줄러** 예제 코드입니다. Rust로 작성되었으며, `no_std` 환경에서 동작합니다.
 
