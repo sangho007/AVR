@@ -12,6 +12,9 @@ pub struct Port {
     port: *mut u8,
 }
 
+unsafe impl Sync for Port {}
+unsafe impl Send for Port {}
+
 impl Port {
     /// 지정한 비트(pin_number)를 출력으로 설정합니다. (DDRx |= (1 << pin_number))
     pub fn set_pin_output(&self, pin_number: u8) {

@@ -28,7 +28,7 @@ static TX_TAIL: Mutex<RefCell<usize>> = Mutex::new(RefCell::new(0));
 ///
 /// - `usart0`: 메인에서 `dp.USART0`을 받았던 것을 그대로 인자로 전달
 /// - `baud_rate`: 예) 9600, 19200, 115200 등
-pub fn init(usart0: atmega2560::USART0, baud_rate: u32) {
+pub fn serial_init(usart0: atmega2560::USART0, baud_rate: u32) {
     // 1) Double Speed 모드 활성화 (U2X0=1)
     usart0.ucsr0a.modify(|_, w| w.u2x0().set_bit());
 
@@ -94,21 +94,6 @@ pub fn write_str(s: &str) {
         // (이미 인터럽트가 활성화되어 있더라도 문제없지만, 확실히 하기 위해 다시 set)
         usart0.ucsr0b.modify(|_, w| w.udrie0().set_bit());
     });
-}
-
-/// 1바이트 **수신** (블로킹)
-pub fn read_byte() -> u8 {
-    let mut received = 0;
-    interrupt::free(|cs| {
-        if let Some(ref usart0) = *USART0.borrow(cs).borrow() {
-            // RXC0(수신 완료) 플래그 대기
-            while usart0.ucsr0a.read().rxc0().bit_is_clear() {}
-
-            // 수신 데이터 읽기
-            received = usart0.udr0.read().bits();
-        }
-    });
-    received
 }
 
 /// 1바이트 **수신** (논블로킹) - 데이터 있으면 Some, 없으면 None
